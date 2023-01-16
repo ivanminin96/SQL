@@ -9,8 +9,8 @@ SELECT to_char(date_trunc('year', transaction_date), 'YYYY') AS year_,
 			PARTITION BY product_id 
 			ORDER BY to_char(date_trunc('year', transaction_date), 'YYYY')) AS prev_year_spend,
        round(((sum(spend) / lag(sum(spend)) OVER (
-		PARTITION BY product_id 
-		ORDER BY to_char(date_trunc('year', transaction_date), 'YYYY'))) - 1) * 100, 2) AS yoy_rate
+		                             PARTITION BY product_id 
+		                             ORDER BY to_char(date_trunc('year', transaction_date), 'YYYY'))) - 1) * 100, 2) AS yoy_rate
 FROM user_transactions
 GROUP BY 1, 2
 ORDER BY 1 ASC
