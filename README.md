@@ -1,2 +1,2 @@
-# sql
-SQL scripts compilation
+# SQL
+Примеры SQL запросов
